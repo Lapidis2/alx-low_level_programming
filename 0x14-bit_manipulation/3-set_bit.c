@@ -15,7 +15,7 @@ int set_bit(unsigned long int *num, unsigned int index)
 	// shift the mask left by index bits to set the 1 at the specified index
 	mask <<= index;
 
-	// use bitwise OR to set the bit at the specified index to 1
+	// use bitwise OR to set the bit at the specified index to 1
 	*num |= mask;
 
 	return 1;
