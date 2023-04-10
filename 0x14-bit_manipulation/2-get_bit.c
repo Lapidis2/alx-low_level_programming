@@ -1,19 +1,20 @@
-#include "main.h"
-#include <stdio.h>
 /**
  * get_bit - get the value of a bit at a given index
- * @n: number to search and evaluate
+ * @num: number to evaluate
  * @index: index starting from 0, of the bit we want to get
- * Return:the  Value of bit at index
+ * Return: Value of bit at index, or -1 if error
  */
-int get_bit(unsigned long int n, unsigned int index)
+int get_bit(unsigned long int num, unsigned int index)
 {
-	unsigned long int bit_value;
+    // Check if index is within bounds of the number
+    if (index >= sizeof(unsigned long int) * 8)
+        return (-1); // Return -1 if index is invalid
 
-	if (index > 62)
-		return (-1);
+    // Shift the number to the right by index bits to isolate the bit at index
+    unsigned long int mask = num >> index;
 
-	bit_value = n >> index;
+    // Extract the bit at index by performing a bitwise AND with 1
+    int bit_value = mask & 1;
 
-	return (bit_value & 1);
+    return bit_value;
 }
